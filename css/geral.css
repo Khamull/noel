@@ -17,9 +17,16 @@ html, body {
 	width:990px;
 }
 #topo {
-	height:100px;
+	height:110px;
+	width:1100px;
 	background-image:url(../images/img_topo.png);
 	background-color:transparent;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-top-left-radius: 15px;
+  	border-top-right-radius: 15px;
 }
 #tituloBar {
 	height:30px;
@@ -34,20 +41,25 @@ html, body {
 }
 #rodape {
 	clear:both;
-	display:table;
 	margin:auto;
-	width:990px;
+	width:1100px;
 	height:70px;
 	background-image:url(../images/img_rodape.png);
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
 	font-size:11px;
 	color:#FFFFFF;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-bottom-left-radius: 15px;
+  	border-bottom-right-radius: 15px;
 }
 #topo, #menuBar, #corpo; #rodape {
 	display:block;
 	float:left;
-	width:990px;
+	width:1000px;
 }
 #corpo {
 	background:#fff;
@@ -103,7 +115,7 @@ input {
 	text-align:left;
 	}
 input:hover, select:hover {
-	background:#ccc;
+	background:#ffffff;
 	/*text-transform:uppercase*/
 	}	
 input.botao {
@@ -231,7 +243,7 @@ border-top:1px solid white;
 text-align:left;
 line-height:25px;
 text-indent:10px;
-background:#ddd;
+background:#ffffff;
 	}	
 
 a {

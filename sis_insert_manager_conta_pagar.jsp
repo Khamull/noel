@@ -28,6 +28,8 @@ ResultSet rs02 = null;
 //Atribui os valores do formulário ao objetos
 contapagar.formPag.formPagID = Integer.parseInt(request.getParameter("formID"));
 contapagar.favorecido = request.getParameter("favorecido");
+contapagar.razao = request.getParameter("razao");
+contapagar.numeroNF = request.getParameter("NF");
 
 	//Trata valor
 	String valor = request.getParameter("valor");
@@ -150,7 +152,7 @@ intervalo += contapagar.intervalo;
 
 <%
 //Redireciona para a página de Cadastro de contas à pagar e manda a mensagem
-response.sendRedirect("sis_insert_conta_pagar_separada.jsp?msg=3");//Caso de erro Comentar essa linha para enxergar todo o processo
+response.sendRedirect("sis_conta_pagar_separada.jsp?msg=3");//Caso de erro Comentar essa linha para enxergar todo o processo
 %>
 
 </table>

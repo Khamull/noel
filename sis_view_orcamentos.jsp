@@ -166,6 +166,7 @@ function verForm(){
    <td width="132" align="left"><strong>Valor</strong></td>
    <td width="106" align="left"><strong>Hor&aacute;rio</strong></td>
    <td width="106" align="left"><strong>Data</strong></td>
+   <td  align="center"><strong>Efetivar</strong></td>
    <td width="60" align="center">&nbsp;</td>
   </tr>
   
@@ -194,6 +195,7 @@ function verForm(){
    <td width="132" height="30" align="left" valign="middle"><%=valor%></td>
    <td width="106" height="30" align="left" valign="middle"><%=rs.getTime("data") %></td>
    <td width="106" height="30" align="left" valign="middle"><%=dataOrcamento%></td>
+   <td align="center" valign="middle"><a href="sis_gerar_venda_orcamento.jsp?orcamentoID=<%=rs.getString("orcamentoID")%>" title="Gerar Venda"><img src="ico/ico_joinha.png" width="20" height="20" border="0" /></a></td>
    <td width="60" height="30" align="center" valign="middle"><a href="sis_print_orcamento_fechado.jsp?orcamentoID=<%=rs.getString("orcamentoID")%>" title="Imprimir Cupom"><img src="ico/ico_print.png" width="20" height="20" border="0" /></a></td>
   </tr>
   <tr>

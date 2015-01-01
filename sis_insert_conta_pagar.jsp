@@ -1,10 +1,12 @@
-<%@ page errorPage="index.jsp?erro=3" %>
+<!-- %@ page errorPage="index.jsp?erro=3" %-->
 <%@ page import="java.sql.*" %>
 <%@ include file="inc/seguranca.jsp" %>
 <%@ include file="inc/conexao.jsp" %>
 <%@ include file="inc/acesso_nivel.jsp" %>
 
 <jsp:useBean id="pagar" class="financeiro.Pagar" scope="page"></jsp:useBean>
+
+<jsp:useBean id="fornec" class="cadastro.Fornecedor" scope="page"></jsp:useBean>
 
 <jsp:useBean id="data" class="formatar.Datas" scope="page"></jsp:useBean>
 
@@ -13,17 +15,31 @@
 <%
 //Instancia um objeto do tipo Statement para ajudar na Query
 Statement st01 = con.createStatement();
+Statement st02 = con.createStatement();
+Statement st03 = con.createStatement();
 %>
 
 <%
 //Instancia um objeto do tipo ResultSet para receber resultado de uma Consulta
 ResultSet rs = null;
 ResultSet rs01 = null;
+ResultSet rs02 = null;
+ResultSet rs03 = null;
 %>
 
 <%
 //Pesquisa as formas de Pagamento
 rs = st.executeQuery(formas.listaFormasPagamento());
+rs03 = st03.executeQuery(pagar.razoes());
+String razoes ="";
+while(rs03.next()){
+	if(rs03.getString("razao") != null ){
+		razoes += "\"" + rs03.getString("razao") + "\",";
+	}
+	else{
+		razoes ="";
+	}
+}
 %>
 
 <%
@@ -53,8 +69,20 @@ if(request.getParameter("msg") != null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2" />
 <title>FORTE SYSTEM</title>
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css"/>
+  <script src="js/jquery-1.4.3.min.js"></script>
+  <script src="jquery-ui-1.11.2/jquery-ui.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    var availableTags = [
+		<%=razoes%>
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
 
-<script type="text/javascript">
 function verForm(){
 	
 	var contador = 0;
@@ -148,6 +176,11 @@ function apenasNumero()	{
 if (event.keyCode<48 || event.keyCode>57){return false;} 
 }
 
+function Upper(obj){
+	var valor = obj.value;
+	var Up = valor.toUpperCase();
+	document.getElementById("tags").value = Up;
+}
 </script>
 
 </head>
@@ -189,12 +222,32 @@ if (event.keyCode<48 || event.keyCode>57){return false;}
     <td colspan="2" align="center"><strong>CADASTRAR NOVA CONTA A PAGAR</strong></td>
   </tr>
   <tr bgcolor="#CCCCCC">
-    <td width="145" align="left">Valor a Pagar</td>
-    <td width="214" align="left"><input name="valor" type="text" size="20" maxlength="10" onkeypress="return numero(this)" /></td>
+    <td width="145" align="left">Nota Fiscal</td>
+    <td width="214" align="left"><input name="NF" type="text" size="20" maxlength="10" onkeypress="return numero(this)" style="text-align: right;"/></td>
   </tr>
   <tr bgcolor="#CCCCCC">
-    <td align="left">Favorecido</td>
-    <td align="left"><input name="favorecido" type="text" size="50" maxlength="100" /></td>
+    <td width="145" align="left">Valor a Pagar</td>
+    <td width="214" align="left"><input name="valor" type="text" size="20" maxlength="10" onkeypress="return numero(this)" style="text-align: right;" /></td>
+  </tr>
+  <tr bgcolor="#CCCCCC">
+  	<td align="left">Favorecido</td>
+  	<td align="left">
+  		<select name="favorecido" required="required">
+  			<option value="-1">Selecione...</option>
+  			<%rs02 = st02.executeQuery(fornec.listaFornecedoresAtivos());
+  				while(rs02.next()){%>
+  					<option value="<%=rs02.getString("fornNomeFantasia")%>"><%=rs02.getString("fornNomeFantasia")%></option>
+  				<%}%>
+  		</select>
+  	</td>
+  </tr>
+  <tr bgcolor="#CCCCCC">
+    <td align="left">Razão</td>
+    <td align="left">
+	    <div class="ui-widget">
+	  		<input id="tags" name="razao" onchange="Upper(this)" />
+		</div>
+	</td>
   </tr>
   <tr>
    <td align="left" bgcolor="#E4E4E4">Forma de Pgto</td>

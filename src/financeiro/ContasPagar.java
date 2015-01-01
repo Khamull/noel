@@ -20,8 +20,8 @@ public class ContasPagar
     public String cadastraConta()
     {
         String cadastrar = "INSERT INTO contapagar ";
-        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("(formPagID, favorecido, valor, vezes, intervalo, data, usuario, empresaID) ").toString();
-        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("VALUES ('").append(formPag.formPagID).append("', '").append(favorecido).append("', '").append(valor).append("', '").append(vezes).append("', '").append(intervalo).append("', '").append(data).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("(formPagID, favorecido, razao, numeroNF, valor, vezes, intervalo, data, usuario, empresaID) ").toString();
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("VALUES ('").append(formPag.formPagID).append("', '").append(favorecido).append("', '").append(razao).append("', '").append(numeroNF).append("', '").append(valor).append("', '").append(vezes).append("', '").append(intervalo).append("', '").append(data).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastrar;
     }
 
@@ -29,6 +29,7 @@ public class ContasPagar
     {
         return "SELECT * FROM contapagar ORDER BY contapagarID DESC LIMIT 1";
     }
+    
 
     public String contaPorId()
     {
@@ -58,4 +59,6 @@ public class ContasPagar
     public String data;
     public String usuario;
     public Empresa empresa;
+    public String razao;
+    public String numeroNF;
 }

@@ -19,6 +19,7 @@ public class Lancamentos
 
     public Lancamentos()
     {
+    	emprestimo = new Emprestimo();
         receber = new Receber();
         pagar = new Pagar();
         venda = new Venda();
@@ -174,7 +175,16 @@ public class Lancamentos
         busca = (new StringBuilder(String.valueOf(busca))).append("WHERE pagarID = '").append(pagar.pagarID).append("'").toString();
         return busca;
     }
-
+    
+    public String emprestimos_()
+    {
+        String salvaValor = "INSERT INTO lancamentos ";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(emprestimoID, contaPagarID, livroID, formID, valor, favorecido, observacao, tipo, usuario) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(emprestimo.emprestimoID).append("', '").append(contaPagar.contaID).append("', '").append(livro.livroID).append("', '").append(formaPag.formPagID).append("', '").append(valor).append("', '").append(favorecido).append("', '").append(observacao).append("', 'E', '").append(usuario.usuarioID).append("')").toString();
+        return salvaValor;
+    }
+    
+    public Emprestimo emprestimo;
     public int lancamentoID;
     public Receber receber;
     public Pagar pagar;

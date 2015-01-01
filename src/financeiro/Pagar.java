@@ -28,6 +28,11 @@ public class Pagar
         inserePagar = (new StringBuilder(String.valueOf(inserePagar))).append("VALUES ('").append(conta.contaID).append("', '").append(forma.formPagID).append("', '").append(valor).append("', '").append(vencimento).append("', '").append(parcela).append("', '").append(de).append("', '").append(status).append("', '").append(empresa.empresaID).append("')").toString();
         return inserePagar;
     }
+    
+    public String razoes()
+    {
+        return "SELECT DISTINCT(razao) FROM contapagar ORDER BY razao ASC";
+    }
 
     public String pesquisaConta(String dataInicio, String dataFim)
     {
@@ -123,7 +128,7 @@ public class Pagar
     public String pesquisaContaPorEmpresa(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.*, ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();

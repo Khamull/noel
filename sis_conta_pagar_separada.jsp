@@ -1,4 +1,4 @@
-<%@ page errorPage="index.jsp?erro=3" %>
+<!-- %@ page errorPage="index.jsp?erro=3" %-->
 <%@ page import="java.sql.*" %>
 <%@ include file="inc/seguranca.jsp" %>
 <%@ include file="inc/conexao.jsp" %>
@@ -139,10 +139,10 @@ function excluirPagar(pagarID){
  <br />
   <table width="960" align="center" cellpadding="0" cellspacing="0">
    <tr>
-     <td colspan="9" height="15"></td>
+     <td colspan="11" height="15"></td>
    </tr>
    <tr>
-    <td colspan="9" height="40" align="left" valign="middle">
+    <td colspan="11" height="40" align="left" valign="middle">
         
      <form name="formBusca" method="post">
       <table width="960" align="center" cellpadding="2" cellspacing="2" style="border:2px solid #0033CC">
@@ -186,10 +186,10 @@ function excluirPagar(pagarID){
     </td>
    </tr>
    <tr>
-    <td colspan="9" height="20"></td>
+    <td colspan="11" height="20"></td>
    </tr>
    <tr>
-    <td colspan="9" align="center"><font size="4"><strong>CONTAS A PAGAR EM: <font color="#0033CC">- <%=data.retornaData(Integer.parseInt(mes)) %> - <%=ano %></font></strong></font></td>
+    <td colspan="11" align="center"><font size="4"><strong>CONTAS A PAGAR EM: <font color="#0033CC">- <%=data.retornaData(Integer.parseInt(mes)) %> - <%=ano %></font></strong></font></td>
    </tr>
    <%if(rs01.next()){ %>
    <%
@@ -199,7 +199,7 @@ function excluirPagar(pagarID){
    
    %>
    <tr>
-    <td colspan="9" align="center">(TOTAL &Agrave; PAGAR DO M&Ecirc;S: <%=faltaPagar %>)</td>
+    <td colspan="11" align="center">(TOTAL &Agrave; PAGAR DO M&Ecirc;S: <%=faltaPagar %>)</td>
    </tr>
    <%} %>
    <tr>
@@ -207,7 +207,9 @@ function excluirPagar(pagarID){
    </tr>
    <tr bgcolor="#EEEEEE">
     <td width="100" align="left"><strong>N&deg; Conta</strong></td>
-    <td width="280" align="left"><strong>Favorecido</strong></td>
+    <td width="140" align="left"><strong>Favorecido</strong></td>
+    <td width="100" align="left"><strong>Razão</strong></td>
+    <td width="" align="left"><strong>NF</strong></td>
     <td width="90" align="left"><strong>Valor</strong></td>
     <td width="60" align="center"><strong>Parcela</strong></td>
     <td width="150" align="center"><strong>Forma de Pagamento</strong></td>
@@ -221,10 +223,10 @@ function excluirPagar(pagarID){
     <td width="60" align="center"><strong>Pagar</strong></td>
    </tr>
    <tr>
-    <td colspan="9">
-     <table width="960" align="center" cellpadding="0" cellspacing="0">  
+    <td colspan="11">
+     <table width="1024" align="center" cellpadding="0" cellspacing="0">  
       <tr>
-       <td colspan="8" height="5"></td>
+       <td colspan="11" height="10"></td>
       </tr> 
 
    <%while (rs.next()){ %>
@@ -245,11 +247,18 @@ function excluirPagar(pagarID){
    
    <tr>
     <td height="30" width="100" align="left"><%=rs.getString("contapagarID") %></td>
-    <td height="30" width="280" align="left"><%=rs.getString("favorecido") %></td>
+    <td height="30" width="140" align="left"><%=rs.getString("favorecido") %></td>
+    <td height="30" width="100" align="left"><%if(rs.getString("razao") != null){%>
+    	 <%=rs.getString("razao")%>
+    	 <%} %>
+    </td>
+    <td height="30" width="" align="left"><%if(rs.getString("numeroNF") != null){%>
+    	 <%=rs.getString("numeroNF")%>
+    	 <%} %>
+    </td>
     <td height="30" width="90" align="left"><%=devendo%></td>
     <td height="30" width="60" align="center"><%=rs.getString("parcela")%>/<%=rs.getString("de")%></td>
     <td height="30" width="150" align="center"><%=rs.getString("descricao")%></td>
-    
     <%
     //Verifica se a Data ja venceu ou não
     String dataSimples = rs.getString("vencimento");
@@ -272,7 +281,7 @@ function excluirPagar(pagarID){
     <td height="30" width="60" align="center"><a href="sis_insert_pagamento.jsp?pagarID=<%=rs.getString("pagarID")%>"><img src="ico/ico_money.png" width="20" height="20" border="0" title="Receber Essa Conta" /></a></td>
    </tr>
    <tr>
-    <td colspan="9" align="center" style="height:1px"><hr style="border:1px solid #333333" /></td>
+    <td colspan="11" align="center" style="height:1px"><hr style="border:1px solid #333333" /></td>
    </tr>
    <%} %>
    	

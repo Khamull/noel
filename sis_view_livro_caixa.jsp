@@ -124,6 +124,7 @@ if (event.keyCode<48 && event.keyCode!=44 || event.keyCode>57 && event.keyCode!=
  <td height="25" bgcolor="#EEEEEE">
   <input type="button" class="botao" onclick="javascript: window.location.href='sis_insert_livro_caixa.jsp'" value="+ Novo Banco" />&nbsp;
   <input type="button" class="botao" onclick="javascript: window.location.href='sis_view_financeiro.jsp'" value="Financeiro" />
+  <input type="button" class="botao" onclick="javascript: window.location.href='sis_insert_emprestimo.jsp'" value="Emprestimo" />
  </td>
 </tr>
 <tr>
