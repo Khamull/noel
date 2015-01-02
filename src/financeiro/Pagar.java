@@ -37,13 +37,16 @@ public class Pagar
     public String pesquisaConta(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
-        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.*, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.* ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'D' ").toString();
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        if(razao != null && !razao.equals("0")){
+        	pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND contapagar.razao = '").append(razao).append("' ").toString();
+        }
         pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
@@ -193,4 +196,5 @@ public class Pagar
     public int de;
     public String status;
     public Empresa empresa;
+    public String razao;
 }

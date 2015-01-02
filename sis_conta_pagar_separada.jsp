@@ -208,7 +208,7 @@ function excluirPagar(pagarID){
    <tr bgcolor="#EEEEEE">
     <td width="100" align="left"><strong>N&deg; Conta</strong></td>
     <td width="140" align="left"><strong>Favorecido</strong></td>
-    <td width="100" align="left"><strong>Razão</strong></td>
+    <td width="100" align="left"><strong>Despesa</strong></td>
     <td width="" align="left"><strong>NF</strong></td>
     <td width="90" align="left"><strong>Valor</strong></td>
     <td width="60" align="center"><strong>Parcela</strong></td>

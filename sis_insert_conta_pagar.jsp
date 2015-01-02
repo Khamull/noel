@@ -242,7 +242,7 @@ function Upper(obj){
   	</td>
   </tr>
   <tr bgcolor="#CCCCCC">
-    <td align="left">Razão</td>
+    <td align="left">Despesas</td>
     <td align="left">
 	    <div class="ui-widget">
 	  		<input id="tags" name="razao" onchange="Upper(this)" />

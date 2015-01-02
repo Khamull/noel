@@ -288,8 +288,12 @@ function venda(){
   <tr>
     <td align="left">Estoque M&iacute;nimo</td>
     <td align="left"><input type="text" name="estoqueMinimo" size="20" maxlength="5" value="<%=rs02.getString("estoqueMinimo") %>" onKeyPress="return numero(this)"/> <input type="hidden" name="estoque" value="<%=rs02.getString("estoque") %>" /></td>
-    <td align="left"></td>
-    <td colspan="3" align="left"></td>
+    <td align="left">NCM/SH</td>
+    <%if(rs02.getString("ncmsh") != null) {%>
+    	<td colspan="3" align="left"><input type="text" name="ncmsh" size="20" value="<%=rs02.getString("ncmsh") %>" /></td>
+    <%}else{ %>
+    	<td colspan="3" align="left"><input type="text" name="ncmsh" size="20" value="" /></td>
+    <%} %>
   </tr>
   <tr>
     <td align="left"><input type="hidden" name="produtoID" value="<%=rs02.getString("produtoID") %>" /></td>

@@ -123,8 +123,8 @@ public class Produto
     public String salvaProduto()
     {
         String salvaProd = "INSERT INTO produto ";
-        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("(tipoprodutoID, fornecedorID, nome, codigo, unidade, precoCusto, preco, estoqueminimo, estoque, lucro) VALUES").toString();
-        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("('").append(tipo.tipoProdutoID).append("', '").append(fornecedor.fornecedorID).append("', '").append(nome).append("', '").append(codigo).append("', '").append(unidade).append("', '").append(precoCusto).append("', '").append(preco).append("', '").append(estoqueMinimo).append("', '").append(estoque).append("', '").append(lucro).append("' ) ").toString();
+        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("(tipoprodutoID, fornecedorID, nome, ncmsh, codigo, unidade, precoCusto, preco, estoqueminimo, estoque, lucro) VALUES").toString();
+        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("('").append(tipo.tipoProdutoID).append("', '").append(fornecedor.fornecedorID).append("', '").append(nome).append("', '").append(ncmsh).append("', '").append(codigo).append("', '").append(unidade).append("', '").append(precoCusto).append("', '").append(preco).append("', '").append(estoqueMinimo).append("', '").append(estoque).append("', '").append(lucro).append("' ) ").toString();
         return salvaProd;
     }
 
@@ -132,7 +132,7 @@ public class Produto
     {
         String alterProd = "UPDATE produto SET ";
         alterProd = (new StringBuilder(String.valueOf(alterProd))).append("tipoprodutoID = '").append(tipo.tipoProdutoID).append("', fornecedorID = '").append(fornecedor.fornecedorID).append("', nome = '").append(nome).append("', codigo = '").append(codigo).append("', ").toString();
-        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("unidade = '").append(unidade).append("', precoCusto = '").append(precoCusto).append("', preco = '").append(preco).append("', estoqueminimo = '").append(estoqueMinimo).append("', ").toString();
+        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("unidade = '").append(unidade).append("', precoCusto = '").append(precoCusto).append("', preco = '").append(preco).append("', estoqueminimo = '").append(estoqueMinimo).append("', ncmsh = '").append(ncmsh).append("', ").toString();
         alterProd = (new StringBuilder(String.valueOf(alterProd))).append("estoque = '").append(estoque).append("', lucro = '").append(lucro).append("' ").toString();
         alterProd = (new StringBuilder(String.valueOf(alterProd))).append("WHERE produtoID = '").append(produtoID).append("'").toString();
         return alterProd;
@@ -200,4 +200,5 @@ public class Produto
     public int estoqueMinimo;
     public float estoque;
     public String lucro;
+    public String ncmsh;
 }

@@ -30,6 +30,7 @@ produto.preco 						= Float.parseFloat(request.getParameter("precoVenda"));
 produto.lucro 						= request.getParameter("lucro");
 produto.estoqueMinimo 				= Integer.parseInt(request.getParameter("estoqueMinimo"));
 produto.estoque						= Float.parseFloat(request.getParameter("estoque"));
+produto.ncmsh						= request.getParameter("ncmsh");
 
 %>
 

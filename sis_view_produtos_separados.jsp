@@ -234,7 +234,11 @@ rs01 = st01.executeQuery(produtoEstoque.pesquisaEstoque());
 %>
 
    <tr>
-    <td height="30" width="80" align="left"><font size="1"><%=rs.getString("codigo")%></font></td>
+   <%if(rs.getString("ncmsh") != null ) {%>
+    	<td height="30" width="80" align="left" title="<%=rs.getString("ncmsh")%>"><font size="1"><%=rs.getString("codigo")%></font></td>
+    <%}else{ %>
+    	<td height="30" width="80" align="left" title="NCM/SH não cadastrado!"><font size="1"><%=rs.getString("codigo")%></font></td>
+    <%} %>
     <td height="30" width="200" align="left"><%=rs.getString("nome")%></td>
     <td width="160" height="30" align="left"><%=rs.getString("tipo")%></td>
     <td height="30" width="90" align="left"><%=valor%></td>

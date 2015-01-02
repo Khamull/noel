@@ -275,8 +275,8 @@ function venda(){
   <tr>
     <td align="left">Estoque M&iacute;nimo</td>
     <td align="left"><input type="text" name="estoqueMinimo" size="20" maxlength="5" onKeyPress="return numero(this)"/></td>
-    <td align="left"></td>
-    <td colspan="3" align="left"></td>
+    <td align="left">NCM/SH</td>
+    <td colspan="3" align="left"><input type="text" name="ncmsh" size="20" required="required"/></td>
   </tr>
   <tr>
     <td align="left">&nbsp;</td>
