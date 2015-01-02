@@ -76,7 +76,10 @@ String anoInicio = "";
 String anoFim = "";
 String dataInicio = "";
 String dataFim = "";
-
+//Verifica se foi passado razaõ
+if(request.getParameter("razao")!=null){
+	pagar.razao = request.getParameter("razao");
+}
 
 //Verifica se foi passado parametro de data e Trata a Data
 if(request.getParameter("diaA")!=null){
@@ -472,7 +475,8 @@ String valTotal = formato.format(valorTotal);
       }
       %>
         <tr>
-         <td height="15" align="left" colspan="3"><strong>Favorecido</strong></td>
+         <td height="15" align="left" colspan="2"><strong>Favorecido</strong></td>
+         <td height="15" align="left" colspan="1"><strong>Despesa</strong></td>
          <td align="left"><strong>Valor</strong></td>
         </tr>
       <%ln++; %>
@@ -523,7 +527,8 @@ String valTotal = formato.format(valorTotal);
       }
       %>
         <tr>
-         <td height="15" align="left" colspan="3"><%=rs02.getString("favorecido") %></td>
+         <td height="15" align="left" colspan="2"><%=rs02.getString("favorecido") %></td>
+         <td height="15" align="left" colspan="1"><%=rs02.getString("razao") %></td>
          <td align="left"><%=formato.format(rs02.getDouble("valor")) %></td>
         </tr>
      <%ln++; %>

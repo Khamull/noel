@@ -9,10 +9,13 @@
 
 <jsp:useBean id="cliente" class="cadastro.Cliente" scope="page"></jsp:useBean>
 
+<jsp:useBean id="pagar" class="financeiro.Pagar" scope="page"></jsp:useBean>
+
 <%
 //Instancia um objeto do tipo Statement para ajudar na query
 Statement st01 = con.createStatement();
 Statement st02 = con.createStatement();
+Statement st03 = con.createStatement();
 %>
 
 
@@ -21,12 +24,15 @@ Statement st02 = con.createStatement();
 ResultSet rs = null;
 ResultSet rs01 = null;
 ResultSet rs02 = null;
+ResultSet rs03 = null;
 %>
 
 
 <%
 //Pesquisa todas as formas de Pagamento Ativas
 rs01 = st01.executeQuery(forma.listaFormasPagamento());
+//pesquisa razões
+rs03 = st03.executeQuery(pagar.razoes());
 %>
 
 
@@ -41,8 +47,8 @@ function verForm(){
 	
 }
 
-function abreRelatorio(diaA, mesA, anoA, diaB, mesB, anoB, forma){
-	window.open('rep_contas_pagas.jsp?diaA='+diaA+'&mesA='+mesA+'&anoA='+anoA+'&diaB='+diaB+'&mesB='+mesB+'&anoB='+anoB+'&forma='+forma, 'Retiradas', 'width = 800; height = 600; scrollbars=yes')
+function abreRelatorio(diaA, mesA, anoA, diaB, mesB, anoB, forma, razao){
+	window.open('rep_contas_pagas.jsp?razao='+razao+'&diaA='+diaA+'&mesA='+mesA+'&anoA='+anoA+'&diaB='+diaB+'&mesB='+mesB+'&anoB='+anoB+'&forma='+forma, 'Retiradas', 'width = 800; height = 600; scrollbars=yes')
 }
 
 </script>
@@ -106,9 +112,18 @@ function abreRelatorio(diaA, mesA, anoA, diaB, mesB, anoB, forma){
        <option value="<%=rs01.getString("formID") %>"><%=rs01.getString("descricao") %></option>
       <%} %>
     </select></td>
-    <td align="center">&nbsp;</td>
-    <td align="left"></td>
-    <td colspan="2" align="left">&nbsp;</td>
+    <td align="center">DESPESAS</td>
+    <td align="left" colspan="3">
+    	<select name="razao" style="width:180px">
+    		<option value="0" selected="selected">Selecione...</option>
+    		<%while(rs03.next()){ %>
+	    		<%if(rs03.getString("razao") != null){%>
+	       			<option value="<%=rs03.getString("razao") %>"><%=rs03.getString("razao") %></option>
+	       		<%} %>	
+      		<%} %>
+    	</select>
+    </td>
+    
     <td align="left">&nbsp;</td>
   </tr>
   <tr>
@@ -320,7 +335,7 @@ function abreRelatorio(diaA, mesA, anoA, diaB, mesB, anoB, forma){
 if(request.getParameter("PESQUISAR")!=null){
 %>
  <script type="text/javascript">
-  abreRelatorio('<%=request.getParameter("diaA")%>', '<%=request.getParameter("mesA")%>', '<%=request.getParameter("anoA")%>', '<%=request.getParameter("diaB")%>', '<%=request.getParameter("mesB")%>', '<%=request.getParameter("anoB")%>', '<%=request.getParameter("formaID")%>');
+  abreRelatorio('<%=request.getParameter("diaA")%>', '<%=request.getParameter("mesA")%>', '<%=request.getParameter("anoA")%>', '<%=request.getParameter("diaB")%>', '<%=request.getParameter("mesB")%>', '<%=request.getParameter("anoB")%>', '<%=request.getParameter("formaID")%>', '<%=request.getParameter("razao")%>');
  </script>
 <%}%>
 

@@ -113,15 +113,17 @@ function abreRelatorio(diaA, mesA, anoA, diaB, mesB, anoB, forma, razao){
       <%} %>
     </select></td>
     <td align="center">DESPESAS</td>
-    <td align="left">
+    <td align="left" colspan="3">
     	<select name="razao" style="width:180px">
     		<option value="0" selected="selected">Selecione...</option>
     		<%while(rs03.next()){ %>
-       			<option value="<%=rs03.getString("razao") %>"><%=rs03.getString("razao") %></option>
+	    		<%if(rs03.getString("razao") != null){%>
+	       			<option value="<%=rs03.getString("razao") %>"><%=rs03.getString("razao") %></option>
+	       		<%} %>	
       		<%} %>
     	</select>
     </td>
-    <td colspan="2" align="left">&nbsp;</td>
+    
     <td align="left">&nbsp;</td>
   </tr>
   <tr>
