@@ -36,6 +36,20 @@ public class OrcamentoItem
         pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("ORDER BY orcamentoitem.itemID DESC").toString();
         return pesquisaItem;
     }
+    
+    public String listaItensPorIDParaVenda()
+    {
+        String pesquisaItem = "SELECT produto.*, ";
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("tipoproduto.*, ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("orcamentoitem.* ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("FROM orcamentoitem ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("INNER JOIN produto ON produto.produtoID = orcamentoitem.produtoID ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("WHERE orcamentoitem.orcamentoID = '").append(orcamento.orcamentoID).append("' ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("ORDER BY orcamentoitem.itemID DESC").toString();
+        return pesquisaItem;
+    }
+
 
     public String salvaItem()
     {

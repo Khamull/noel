@@ -11,7 +11,7 @@
 
 <%
 //Variavel que recebe o nivel do Usuário
-String nivelUsuario = String.valueOf(session.getAttribute("nivel"));;
+String nivelUsuario = String.valueOf(session.getAttribute("nivel"));
 
 //Se o nivel for restrito enviar para a página de erro
 if(nivelUsuario.equals("2") || nivelUsuario.equals("3") || nivelUsuario.equals("4") || nivelUsuario.equals("6")){
