@@ -66,7 +66,7 @@ if(request.getParameter("msg") != null){
 <script type="text/javascript">
 
 //Verificar e Formulário
-function verForm(){
+/*function verForm(){
 
 	if(document.form1.fornNomeFantasia.value == ""){
 	alert("Favor informar o nome Fantasia!");
@@ -131,7 +131,7 @@ function verForm(){
 	}		
 	
 			
-}
+}*/
 
 //Valida se o Campo é Numérico
 function numero()	{

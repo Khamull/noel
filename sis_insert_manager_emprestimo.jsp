@@ -69,7 +69,7 @@ contapagar.usuario = (String)session.getAttribute("usuario");
 
 <%
 //Cadastra uma Conta à Pagar na Base de Dados
-st.execute(contapagar.cadastraConta());
+st.execute(contapagar.cadastraContaEmprestimo());
 
 //Pesquisa o ID da ultima Conta à Pagar inserida na Base de Dados
 rs01 = st01.executeQuery(contapagar.ultimaConta());

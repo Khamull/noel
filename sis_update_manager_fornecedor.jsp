@@ -41,20 +41,20 @@ fornecedor.empresa.empresaID		= Integer.parseInt((String)session.getAttribute("e
 
 <%
 //Verifica se já existe um Fornecedor com esse CNPJ
-rs = st.executeQuery(fornecedor.verificaCnpjAlterar());
+//rs = st.executeQuery(fornecedor.verificaCnpjAlterar());
 
-if(rs.next()){
+//if(rs.next()){
 	//Caso exista um Fornecedor com esse CPF / CNPJ, retorna para a Página de Cadastro
-	response.sendRedirect("sis_update_fornecedor.jsp?msg=5&fornecedorID="+fornecedor.fornecedorID);
-}else{
+//	response.sendRedirect("sis_update_fornecedor.jsp?msg=5&fornecedorID="+fornecedor.fornecedorID);
+//}else{
 	//Senão: Executa a Função que irá Alterar os dados na Base de Dados
 	st.execute(fornecedor.alteraFornecedor());
 	response.sendRedirect("sis_view_fornecedores.jsp?msg=2");
-}
+//}
 %>
 
 <%
  //fecha a consulta
  st.close();
- rs.close();
+ //rs.close();
 %>

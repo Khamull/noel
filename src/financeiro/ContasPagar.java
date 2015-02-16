@@ -24,6 +24,14 @@ public class ContasPagar
         cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("VALUES ('").append(formPag.formPagID).append("', '").append(favorecido).append("', '").append(razao).append("', '").append(numeroNF).append("', '").append(valor).append("', '").append(vezes).append("', '").append(intervalo).append("', '").append(data).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastrar;
     }
+    
+    public String cadastraContaEmprestimo()
+    {
+        String cadastrar = "INSERT INTO contapagar ";
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("(formPagID, favorecido, razao, valor, vezes, intervalo, data, usuario, empresaID) ").toString();
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("VALUES ('").append(formPag.formPagID).append("', '").append(favorecido).append("', '").append(razao).append("', '").append(valor).append("', '").append(vezes).append("', '").append(intervalo).append("', '").append(data).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
+        return cadastrar;
+    }
 
     public String ultimaConta()
     {

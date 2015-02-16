@@ -42,16 +42,16 @@ fornecedor.empresa.empresaID		= Integer.parseInt((String)session.getAttribute("e
 
 <%
 //Verifica se já existe um fornecedor com esse CNPJ
-rs = st.executeQuery(fornecedor.verificaCnpj());
+//rs = st.executeQuery(fornecedor.verificaCnpj());
 
-if(rs.next()){
+//if(rs.next()){
 	//Caso exista um Fornecedor com esse CPF / CNPJ, retorna para a Página de Cadastro
-	response.sendRedirect("sis_insert_fornecedor.jsp?msg=4");
-}else{
+//	response.sendRedirect("sis_insert_fornecedor.jsp?msg=4");
+//}else{
 	//Senão: Executa a Função que irá salvar os dados na Base de Dados
 	st.execute(fornecedor.salvarFornecedor());
 	response.sendRedirect("sis_view_fornecedores.jsp?msg=1");
-}
+//}
 %>
 
 <%

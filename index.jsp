@@ -30,9 +30,9 @@ ResultSet rs02 = null;
 <%
 //Atribuindo Variaveis
 String erroSessao = "";
-if(request.getParameter("erro") != null){
+//if(request.getParameter("erro") != null){
  erroSessao = request.getParameter("erro");
-}
+//}
 %>
 
 
